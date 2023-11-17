@@ -9,6 +9,7 @@ import AddUser from './users/AddUser';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
 import Homepage from './pages/Homepage';
+import ForgetPassword from './pages/ForgetPassword';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route exact path = "/loginUser" element={<Login/>}/>
             <Route exact path = "/admin" element={<Admin/>}/>
             <Route exact path = "/Homepage" element={<Homepage/>}/>
+            <Route exact path = "/forget" element={<ForgetPassword/>}/>
         </Routes>
       </Router>
       

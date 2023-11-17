@@ -24,9 +24,10 @@ export default function Admin() {
   };
   const navigate = useNavigate();
   const sam = localStorage.getItem("admin");
-
+  const sami = localStorage.getItem("login")
+  console.log('login',sami)
   const checkAdmin = () => {
-   if (sam !== "true") {
+   if (sam !== "true" || sami === "false")   {
      
      navigate('/loginUser');
    }

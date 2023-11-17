@@ -7,9 +7,13 @@ export default function UserList() {
   const sam = localStorage.getItem("admin");
   const [users, setUsers] = useState([]);
 
+  const sami = localStorage.getItem("login")
+
+  console.log('admin',sam)
+
   const checkAdmin = () => {
     console.log(sam)
-    if (sam !== "true") {
+    if (sam !== "true" || sami === "false") {
       console.log('olaola')
       navigate('/loginUser');
     }
