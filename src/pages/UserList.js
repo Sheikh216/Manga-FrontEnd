@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import {Link, useParams } from "react-router-dom";
 
 export default function UserList() {
   const navigate = useNavigate();
-  const sam = localStorage.getItem("admin");
+  const humayera = localStorage.getItem("admin");
   const [users, setUsers] = useState([]);
 
+  const {id}=useParams()
+
   const checkAdmin = () => {
-    console.log(sam)
-    if (sam !== "true") {
+    console.log(humayera)
+    if (humayera !== "true") {
       console.log('olaola')
       navigate('/loginUser');
     }
   };
+
 
   useEffect(() => {
     checkAdmin(); // Call checkAdmin function first
@@ -29,6 +33,10 @@ export default function UserList() {
     }
   };
 
+const deleteUser=async (id)=> {
+  await axios.delete(`http://localhost:8080/user/${id}`);
+  loadUsers();
+};
 
   return (
     <div className='container-fluid'>
@@ -49,23 +57,35 @@ export default function UserList() {
           </thead>
           <tbody>
 
-            {
-              users.map((user,index)=>(
+            {users.map((user,index)=>(
                 <tr>
-                  <th scope="row">{index+1}</th>
+                  <th scope="row" key={index}>{index+1}</th>
                   <td>{user.username}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
-                  <td>{'***'}</td>
-                
-                  
+                  <td>{'****'}</td>
                   <td>
-                    <button className='btn btn-primary mx-2'>EDIT</button>
-                    <button className='btn btn-outline-primary mx-1'>View</button>
+                    <Link
+                        className="btn btn-primary mx-2"
+                        to={`/edituser/${user.id}`}
+                    >
+                      EDIT
+                    </Link>
+                    <Link
+                        className="btn btn-outline-primary mx-2"
+                        to={`/viewuser/${user.id}`}
+                    >
+                      View
+                    </Link>
+                    < button
+                        className="btn btn-danger mx-2"
+                        onClick={()=>deleteUser(user.id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
-              ))
-            }
+              ))}
 
           </tbody>
         </table>
