@@ -23,10 +23,10 @@ export default function Admin() {
     
   };
   const navigate = useNavigate();
-  const sam = localStorage.getItem("admin");
+  const humayera = localStorage.getItem("admin");
 
   const checkAdmin = () => {
-   if (sam !== "true") {
+   if (humayera !== "true") {
      
      navigate('/loginUser');
    }

@@ -4,15 +4,15 @@ import axios from 'axios';
 
 export default function Navbar() {
 
-  const [users,setusers] = React.useState([])
+  const [user,setUser] = React.useState([])
 
   React.useEffect(()=>{
-    loadusers()
+    loadUser()
   },[])
 
-  const loadusers = async ()=>{
+  const loadUser = async ()=>{
     const result =await axios.get("http://localhost:8080/users") //coming from backend.
-    setusers(result.data)
+    setUser(result.data)
   };
 
   
@@ -20,9 +20,9 @@ export default function Navbar() {
     <div>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             Navbar
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"

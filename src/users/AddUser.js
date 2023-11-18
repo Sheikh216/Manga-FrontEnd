@@ -31,6 +31,7 @@ export default function AddUser() {
         <div className="col-md-6">
           <div className="card p-4">
             <h2 className="text-center mb-4">Register</h2>
+            
             <form onSubmit={onSubmit}>
               <div className="mb-3">
                 <label htmlFor="name" className="form-label">
