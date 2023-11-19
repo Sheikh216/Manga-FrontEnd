@@ -40,10 +40,10 @@ export default function Admin() {
   return (
     <div style={containerStyle}>
       <h1>Admin Page</h1>
-      <Link to="/">
+      <Link to="/userList">
         <button className='mx-2' style={buttonStyle}>USERS</button>
       </Link>
-      <Link to="/admin/products">
+      <Link to="/productList">
         <button className='mx-2' style={buttonStyle}>PRODUCTS</button>
       </Link>
     </div>

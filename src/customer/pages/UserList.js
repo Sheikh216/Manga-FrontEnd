@@ -5,17 +5,19 @@ import {Link, useParams } from "react-router-dom";
 
 export default function UserList() {
   const navigate = useNavigate();
-  const sam = localStorage.getItem("admin");
+  const ADMIN = localStorage.getItem("admin");
   const [users, setUsers] = useState([]);
 
-  const sami = localStorage.getItem("login")
+  const LOGIN = localStorage.getItem("LOGIN")
 
-  console.log('admin',sam)
+  
 
   const checkAdmin = () => {
-    console.log(sam)
-    if (sam !== "true" || sami === "false") {
-      console.log('olaola')
+    console.log(ADMIN)
+    if (ADMIN !== "true" || LOGIN === "false") {
+      console.log('admin',ADMIN)
+      console.log('login',LOGIN)
+      console.log('NOT ADMIN')
       navigate('/loginUser');
     }
   };

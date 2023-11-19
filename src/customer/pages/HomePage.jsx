@@ -5,15 +5,26 @@ import FooterFiveColsLogo from "../components/footer";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
+  const Admin = localStorage.getItem("admin");
+  const login = localStorage.getItem("LOGIN");
+  const navigate = useNavigate(); // Get the navigate function
+
+  const checkAdmin = () => {
+    if (Admin !== "true" || login === "false") {
+      console.log("NOT ADMIN");
+      navigate("/loginUser"); // Use navigate function to redirect
+    }
+  };
+
   useEffect(() => {
+    checkAdmin();
     loadProducts();
   }, []);
-  useEffect(() => {}, []);
 
   const loadProducts = async () => {
     const result = await axios.get("http://localhost:8080/products/getAll");

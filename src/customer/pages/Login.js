@@ -33,6 +33,7 @@ export default function Login() {
         console.log('Login successful!', response.data.admin);
  
         localStorage.setItem('admin',response.data.admin)
+        localStorage.setItem('LOGIN',response.data.login)
 
         // just for routing to different path.
         const admin_value = localStorage.getItem('admin')

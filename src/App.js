@@ -12,7 +12,7 @@ import CustomerView from "./customer/pages/CustomerView";
 import ViewProduct from "./customer/products/ViewProduct";
 import { BrowserRouter  as Router,Routes, Route } from 'react-router-dom';
 import Login from './customer/pages/Login';
-
+import Admin from "./customer/pages/Admin";
 import Nbar from "./customer/components/navbar/Nbar";
 import Navbar from "./customer/components/navbar/Navbar";
 
@@ -46,6 +46,7 @@ function App() {
        <Route exact path="/editProduct/:id" element={<Edit/>}/>
        <Route exact path="/manga/:id" element={<SingleProductView/>}/>
        <Route exact path="/viewProduct/:id" element={<ViewProduct/>}/>
+       <Route exact path="admin" element={<Admin/>}/>
        
       
         
