@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {Link, useParams } from "react-router-dom";
+import { async } from "q";
 
 export default function UserList() {
   const navigate = useNavigate();
@@ -40,6 +41,25 @@ export default function UserList() {
 const deleteUser=async (id)=> {
   await axios.delete(`http://localhost:8080/user/${id}`);
   loadUsers();
+};
+
+
+//
+
+// const SetAdmin = async(id)=>{
+//   await axios.put(`http://localhost:8080/newAdmin/${id}`)
+  
+// }
+
+const setAsAdmin = async (uid) => {
+  try {
+    await axios.put(`http://localhost:8080/newAdmin/${uid}`,);
+    loadUsers();
+  } catch (error) {
+    console.error("Error setting as admin:", error);
+    // Log the detailed error response if available
+    console.log(error.response.data); // Check the response data for more details
+  }
 };
 
   return (
@@ -87,6 +107,14 @@ const deleteUser=async (id)=> {
                     >
                       Delete
                     </button>
+                    {!user.admin && (
+                    <button
+                      className="btn btn-danger mx-2"
+                      onClick={() => setAsAdmin(user.id)}
+                    >
+                      SET AS ADMIN
+                    </button>
+                  )}
                   </td>
                 </tr>
               ))}
