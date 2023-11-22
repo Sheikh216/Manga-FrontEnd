@@ -95,10 +95,26 @@ export default function SingleProductView() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
+  const CID = localStorage.getItem('CID');
 
-
-
-
+  const addToBag = async () => {
+    try {
+      
+      const url = `http://localhost:8080/add-to-cart/${CID}/${id}`
+      console.log(url)
+      const response = await axios.post(
+        `http://localhost:8080/add-to-cart/${CID}/${id}`, // Replace this URL with your backend endpoint
+        // Additional Axios config, if needed
+      );
+      // Handle success response
+      console.log('Product added to the bag:', response.data);
+      // Perform any necessary actions after adding to the cart (e.g., show a success message)
+    } catch (error) {
+      // Handle error
+      console.error('Error adding product to the bag:', error);
+      // Show an error message to the user or perform appropriate actions
+    }
+  };
 
   let navigate=useNavigate()
   const {id}=useParams()
@@ -226,7 +242,7 @@ console.log(newProduct.productName)
               </div>
             </div>
 
-            <form className="mt-10">
+            <form className="mt-10" >
             
 
               {/* Sizes */}
@@ -235,6 +251,8 @@ console.log(newProduct.productName)
               <button
                 type="submit"
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                onClick={addToBag}
+                key = {product.id}
               >
                 Add to bag
               </button>

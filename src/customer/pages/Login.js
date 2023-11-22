@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
-export default function Login() {
+export default function Login({ setLoggedIn, setPremier }) {
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -30,10 +30,21 @@ export default function Login() {
 
       if (response.status === 200) {
         // Login successful, redirect to the dashboard or another page
+        setLoggedIn(true);
+        localStorage.setItem('loggedIn', true);
+
+        setPremier(response.data.premier)
+        
+        console.log("obj",response.data.premier)
         console.log('Login successful!', response.data.admin);
  
         localStorage.setItem('admin',response.data.admin)
         localStorage.setItem('LOGIN',response.data.login)
+        // localStorage.setItem('Premier',response.data.Premier)
+        localStorage.setItem("USER_PREMIER",response.data.premier)
+
+        //for cart
+        localStorage.setItem("CID",response.data.id)
 
         // just for routing to different path.
         const admin_value = localStorage.getItem('admin')

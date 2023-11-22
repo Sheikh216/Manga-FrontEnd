@@ -81,7 +81,15 @@ import { Link } from "react-router-dom";
                   <p className="mt-1 text-sm text-gray-500">{product.brand}</p>
                 </div>
                 <p className="text-sm font-medium text-gray-900">{product.price} TK</p>
+
+              
               </div>
+              {product.premier && (
+                <div className="absolute top-0 left-0 w-8 h-8 bg-yellow-500 rounded-full flex justify-center items-center">
+                  <span className="text-white font-bold">PRO</span>
+                </div>
+              )}
+
             </Button>
             </Link>
           ))}

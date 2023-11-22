@@ -28,7 +28,10 @@ export default function AddProduct() {
     quantity: 0,
     description: "",
     image: "",
+    premier: false // Include the 'premier' field here
   });
+  
+  console.log(newProduct)
 
   const { productName, brand, price, quantity, description, image } =
     newProduct;
@@ -39,6 +42,10 @@ export default function AddProduct() {
     e.preventDefault();
     await axios.post("http://localhost:8080/products/add",newProduct)
     navigate("/")
+  };
+
+  const onCheckboxChange = (e) => {
+    setNewProduct({ ...newProduct, [e.target.name]: e.target.checked });
   };
 
   return (
@@ -126,6 +133,40 @@ export default function AddProduct() {
                 </div>
               </div>
             </div>
+
+            
+            
+            <div className="sm:col-span-4">
+              <label
+                htmlFor="premier"
+                className="block text-sm font-medium leading-6 text-gray-900"
+              >
+                Premier
+              </label>
+              <div className="mt-2">
+                <label htmlFor="premier" className="flex items-center">
+                  <input
+                    type="checkbox"
+                    name="premier"
+                    id="premier"
+                    checked={newProduct.premier}
+                    onChange={(e) => onCheckboxChange(e)}
+                    className="form-checkbox h-5 w-5 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded-md"
+                  />
+                  <span className="ml-2 text-sm text-gray-600">
+                    Is this a Premier product?
+                  </span>
+                </label>
+              </div>
+                  
+            
+            
+            
+            
+
+
+
+
             <div className="sm:col-span-4">
               <label
                 htmlFor="username"
@@ -281,6 +322,7 @@ export default function AddProduct() {
             Create Product!!
           </button>
         </div>
+      </div>
       </div>
     </form>
   );

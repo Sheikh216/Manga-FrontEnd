@@ -23,22 +23,57 @@ import MainCarosel from "./customer/components/homeCarosel/MainCarosel";
 import EditUser from "./customer/user/EditUser";
 import ViewUser from "./customer/user/ViewUser";
 import SingleProductView from "./customer/products/SingleProductView";
+import { useState, useEffect } from 'react';
+import GO_PRO from "./customer/user/GO_PRO";
 function App() {
+
+
+  const [admin, setAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isPremier,setisPremier] = useState(false)
+
+  useEffect(() => {
+    const isAdmin = localStorage.getItem('admin');
+    setAdmin(isAdmin === 'true');
+
+    const loggedIn= localStorage.getItem('loggedIn');
+    setIsLoggedIn(loggedIn === 'true');
+
+    const Premier = localStorage.getItem("USER_PREMIER")
+    setisPremier(Premier === 'true')
+  }, []);
+
+
   return (
     <div >
-        
+
+
+
         <Router>
-        <Navigation /> 
         
-        <Nbar/>
+        {admin && <Navigation />}
+        
+        
+        
+        
+        <Nbar 
+          loggedIn={isLoggedIn}
+          Premier ={isPremier}
+           />
        
       
       <Routes>
       <Route exact path= "/edituser/:id" element={<EditUser/>}/>
       <Route exact path= "/viewuser/:id" element={<ViewUser/>}/>
       <Route exact path = "/UserList" element = {<> <MainCar2/><UserList/> </>}/>
-      <Route exact path = "/loginUser" element={<Login/>}/>
-       <Route exact path="/" element={<CustomerView/>}/>
+      <Route exact path = "/loginUser" element={<Login 
+        setLoggedIn={setIsLoggedIn}
+        setPremier={setisPremier}  
+        />}/>
+       <Route exact path="/" element={<CustomerView
+
+          setPremier={setisPremier} 
+       />}/>
        <Route exact path="/productList" element={<HomePage/>}/>
        <Route exact path ="/addUsers" element= {<AddUser/>}/>
        <Route exact path="/customerView" element={<CustomerView/>}/>
@@ -46,7 +81,10 @@ function App() {
        <Route exact path="/editProduct/:id" element={<Edit/>}/>
        <Route exact path="/manga/:id" element={<SingleProductView/>}/>
        <Route exact path="/viewProduct/:id" element={<ViewProduct/>}/>
-       <Route exact path="admin" element={<Admin/>}/>
+       <Route exact path="/admin" element={<Admin/>}/>
+       <Route exact path="/PRO" element={<GO_PRO
+        setPremier={setisPremier} 
+       />}/>
        
       
         
