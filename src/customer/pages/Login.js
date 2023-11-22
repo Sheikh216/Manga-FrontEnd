@@ -53,7 +53,7 @@ export default function Login({ setLoggedIn, setPremier }) {
 
          navigate('/admin')
         }else{
-         navigate('/')
+         navigate('/customerView')
         }
 
         

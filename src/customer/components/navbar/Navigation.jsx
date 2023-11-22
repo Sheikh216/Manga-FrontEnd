@@ -349,7 +349,7 @@ export default function Navigation() {
               <div className="ml-4 flex lg:ml-0 lg:items-center ">
                 <a href="#">
                   <span className="sr-only">Your Company</span>
-                  <Link to="/">
+                  <Link to="/customerView">
                     <img
                       className="  pb-3 rounded-full h-20 w-18 flex items-center justify-center "
                       
@@ -375,7 +375,7 @@ export default function Navigation() {
 
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
 
-                  <Link to="/customerView" className="btn bg-white">customer view</Link>
+                  <Link to="/customerView" className="btn bg-white">Customer View</Link>
                   {/* <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                     Create account
                   </a> */}

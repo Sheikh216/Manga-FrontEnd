@@ -89,7 +89,7 @@ export default function GO_PRO({setPremier}) {
    
    localStorage.setItem("USER_PREMIER",true)
    setPremier(true)
-   navigate("/");
+   navigate("/customerView");
   }
 
   return (

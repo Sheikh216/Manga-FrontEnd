@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-export default function AddUser() {
+export default function AddUser({setPremier,setLoggedIn}) {
 
   let navigate = useNavigate()
   const [user, setuser] = React.useState({
@@ -22,7 +22,9 @@ export default function AddUser() {
   const onSubmit=async(e)=>{
    e.preventDefault()
    await axios.post("http://localhost:8080/user",user)
-   navigate("/Homepage");
+   setPremier(false)
+   setLoggedIn(true)
+   navigate("/customerView");
   }
 
   return (

@@ -52,6 +52,8 @@ function App() {
         <Router>
         
         {admin && <Navigation />}
+
+        {/* {admin} */}
         
         
         
@@ -59,6 +61,8 @@ function App() {
         <Nbar 
           loggedIn={isLoggedIn}
           Premier ={isPremier}
+          setLoggedIn={setIsLoggedIn}
+          setPremier={setisPremier} 
            />
        
       
@@ -75,8 +79,13 @@ function App() {
           setPremier={setisPremier} 
        />}/>
        <Route exact path="/productList" element={<HomePage/>}/>
-       <Route exact path ="/addUsers" element= {<AddUser/>}/>
-       <Route exact path="/customerView" element={<CustomerView/>}/>
+       <Route exact path ="/addUsers" element= {<AddUser
+        setPremier={setisPremier} 
+        setLoggedIn={setIsLoggedIn}
+       />}/>
+       <Route exact path="/customerView" element={<CustomerView
+          Premier ={isPremier}
+       />}/>
        <Route exact path="/addProduct" element={<AddProducts/>}/>
        <Route exact path="/editProduct/:id" element={<Edit/>}/>
        <Route exact path="/manga/:id" element={<SingleProductView/>}/>
