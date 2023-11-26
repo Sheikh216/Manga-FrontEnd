@@ -25,6 +25,7 @@ import ViewUser from "./customer/user/ViewUser";
 import SingleProductView from "./customer/products/SingleProductView";
 import { useState, useEffect } from 'react';
 import GO_PRO from "./customer/user/GO_PRO";
+import Rating from "./customer/rating";
 function App() {
 
 
@@ -94,7 +95,7 @@ function App() {
        <Route exact path="/PRO" element={<GO_PRO
         setPremier={setisPremier} 
        />}/>
-       
+       <Route exact path="/rating/:productId" element={<Rating />} />
       
         
         
