@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link,Navigate, useNavigate } from 'react-router-dom';
 
 
-export default function Login({ setLoggedIn, setPremier }) {
+export default function Login({ setLoggedIn, setPremier,admin_status }) {
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -23,12 +23,15 @@ export default function Login({ setLoggedIn, setPremier }) {
     try {
       const response = await axios.post('http://localhost:8080/login', loginData);
 
-      
-      
+      if (response.data.admin ){
+          admin_status(true)
+      }
+ 
       
       
 
       if (response.status === 200) {
+        
         // Login successful, redirect to the dashboard or another page
         setLoggedIn(true);
         localStorage.setItem('loggedIn', true);

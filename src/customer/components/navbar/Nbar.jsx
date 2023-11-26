@@ -5,7 +5,7 @@ import { Button } from '@material-tailwind/react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { ShoppingCartIcon } from '@heroicons/react/outline'
 
-const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier }) => {
+const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier,admin_status }) => {
 
   const admin = localStorage.getItem('admin')
 
@@ -18,6 +18,7 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier }) => {
   const navigate = useNavigate()
 
   function SignOut() {
+    admin_status(false)
     setLoggedIn(false);
     setPremier(false);
     localStorage.setItem('LOGIN', false);
@@ -58,7 +59,7 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier }) => {
     <nav className="bg-black text-white flex justify-between items-center p-4 container">
       {/* Logo */}
       <div>
-        <img src="/path-to-your-logo.png" alt="Logo" className="h-8" />
+        <Link to={"/customerView"}>HOME</Link>
       </div>
 
 
@@ -79,9 +80,9 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier }) => {
         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 1.92 1.61h10.8a2 2 0 0 0 1.92-1.61L23 6H6" />
       </svg>
       {/* You can replace the static '0' with the actual count of items in the cart */}
-      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+      {/* <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
         0
-      </span>
+      </span> */}
       <span className="sr-only">items in cart, view bag</span>
     </Link>
     {/* CART */}
@@ -119,7 +120,7 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier }) => {
         {/* Buttons/Links based on login status */}
         {loggedIn ? (
           <>
-            <p>HELLO</p>
+            {/* <p>HELLO</p> */}
             <Button onClick={SignOut}>SignOut</Button>
           </>
         ) : (

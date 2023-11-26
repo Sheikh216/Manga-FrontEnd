@@ -28,6 +28,7 @@ import GO_PRO from "./customer/user/GO_PRO";
 import ForgetPassword from "./customer/pages/ForgetPassword";
 import Cart from "./customer/pages/Cart";
 import DifferentCart from "./customer/pages/DifferentCart";
+import DifferentCustomerView from "./customer/pages/DifferentCustomerView";
 function App() {
 
 
@@ -38,6 +39,7 @@ function App() {
   const [cartItems,setcartItems] = React.useState([])
   // 
   const [cart, setCart] = useState([]);
+  const [adminPop, setadminPop] = useState('');
 
   
 
@@ -80,7 +82,8 @@ function App() {
           loggedIn={isLoggedIn}
           Premier ={isPremier}
           setLoggedIn={setIsLoggedIn}
-          setPremier={setisPremier} 
+          setPremier={setisPremier}
+          admin_status= {setAdmin}
            />
        
       
@@ -90,7 +93,8 @@ function App() {
       <Route exact path = "/UserList" element = {<> <MainCar2/><UserList/> </>}/>
       <Route exact path = "/loginUser" element={<Login 
         setLoggedIn={setIsLoggedIn}
-        setPremier={setisPremier}  
+        setPremier={setisPremier}
+        admin_status= {setAdmin}  
         />}/>
        <Route exact path="/" element={<CustomerView
 
@@ -112,6 +116,10 @@ function App() {
           items = {cartItems}
           setitems = {setcartItems}
        />}/>
+
+
+        
+
        <Route exact path="/viewProduct/:id" element={<ViewProduct/>}/>
        <Route exact path="/admin" element={<Admin/>}/>
        <Route exact path="/PRO" element={<GO_PRO
@@ -125,6 +133,11 @@ function App() {
           setitems = {setcartItems}
 
       />}/>
+
+      {/*  */}
+
+      
+
        
       
         
