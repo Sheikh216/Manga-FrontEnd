@@ -25,12 +25,28 @@ import ViewUser from "./customer/user/ViewUser";
 import SingleProductView from "./customer/products/SingleProductView";
 import { useState, useEffect } from 'react';
 import GO_PRO from "./customer/user/GO_PRO";
+import ForgetPassword from "./customer/pages/ForgetPassword";
+import Cart from "./customer/pages/Cart";
+import DifferentCart from "./customer/pages/DifferentCart";
 function App() {
 
 
   const [admin, setAdmin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isPremier,setisPremier] = useState(false)
+  // 
+  const [cartItems,setcartItems] = React.useState([])
+  // 
+  const [cart, setCart] = useState([]);
+
+  
+
+
+
+
+
+
+
 
   useEffect(() => {
     const isAdmin = localStorage.getItem('admin');
@@ -41,6 +57,8 @@ function App() {
 
     const Premier = localStorage.getItem("USER_PREMIER")
     setisPremier(Premier === 'true')
+
+    
   }, []);
 
 
@@ -85,21 +103,40 @@ function App() {
        />}/>
        <Route exact path="/customerView" element={<CustomerView
           Premier ={isPremier}
+          cartItems = {cart}
+          setitems = {setCart}
        />}/>
        <Route exact path="/addProduct" element={<AddProducts/>}/>
        <Route exact path="/editProduct/:id" element={<Edit/>}/>
-       <Route exact path="/manga/:id" element={<SingleProductView/>}/>
+       <Route exact path="/manga/:id" element={<SingleProductView
+          items = {cartItems}
+          setitems = {setcartItems}
+       />}/>
        <Route exact path="/viewProduct/:id" element={<ViewProduct/>}/>
        <Route exact path="/admin" element={<Admin/>}/>
        <Route exact path="/PRO" element={<GO_PRO
         setPremier={setisPremier} 
        />}/>
+
+      <Route exact path="/forget" element={<ForgetPassword/>}/>
+      <Route exact path="/Different" element={<DifferentCart/>}/>
+      <Route exact path="/Cart" element={<Cart
+          items = {cartItems}
+          setitems = {setcartItems}
+
+      />}/>
        
       
         
         
       </Routes>
-      <FooterFiveColsLogo />
+      <div
+      >
+        <FooterFiveColsLogo
+         
+
+         />
+      </div>
       </Router>
       
     </div>

@@ -91,30 +91,80 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function SingleProductView() {
+export default function SingleProductView({items,setitems}) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
 
   const CID = localStorage.getItem('CID');
 
-  const addToBag = async () => {
-    try {
-      
-      const url = `http://localhost:8080/add-to-cart/${CID}/${id}`
-      console.log(url)
-      const response = await axios.post(
-        `http://localhost:8080/add-to-cart/${CID}/${id}`, // Replace this URL with your backend endpoint
-        // Additional Axios config, if needed
-      );
-      // Handle success response
-      console.log('Product added to the bag:', response.data);
-      // Perform any necessary actions after adding to the cart (e.g., show a success message)
-    } catch (error) {
-      // Handle error
-      console.error('Error adding product to the bag:', error);
-      // Show an error message to the user or perform appropriate actions
-    }
+ 
+
+
+
+
+
+  const addToCart = () => {
+    console.log('Add to cart clicked!');
+    
+    const selectedProduct = {
+      id: newProduct.id,
+      name: newProduct.productName,
+      price: newProduct.price,
+      quantity: newProduct.quantity,
+      qty: 1,
+      image : newProduct.image,
+      description: newProduct.description
+      // Add other necessary details
+    };
+  
+    // Get the CustomerID from localStorage
+    const CID = localStorage.getItem('CID');
+  
+    // Get existing cart items from localStorage
+    const existingCartItems = JSON.parse(localStorage.getItem('cartItems')) || {};
+  
+    // Retrieve or initialize cart items for the specific CustomerID
+    const cartItemsForCustomer = existingCartItems[CID] || [];
+  
+    // Append the selected product to the existing items for the specific CustomerID
+    cartItemsForCustomer.push(selectedProduct);
+  
+    // Update the cart items object with the new items for the specific CustomerID
+    existingCartItems[CID] = cartItemsForCustomer;
+  
+    // Update localStorage with the updated cart items
+    localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
+
+
+    
+  
+    console.log(`${selectedProduct.name} added to cart for CustomerID: ${CID}!`);
   };
+  
+  
+  
+  // const addToBag = async () => {
+  //   try {
+      
+  //     const url = `http://localhost:8080/add-to-cart/${CID}/${id}`
+  //     console.log(url)
+  //     const response = await axios.post(
+  //       `http://localhost:8080/add-to-cart/${CID}/${id}`, // Replace this URL with your backend endpoint
+  //       // Additional Axios config, if needed
+  //     );
+  //     // Handle success response
+  //     console.log('Product added to the bag:', response.data);
+  //     // Perform any necessary actions after adding to the cart (e.g., show a success message)
+  //   } catch (error) {
+  //     // Handle error
+  //     console.error('Error adding product to the bag:', error);
+  //     // Show an error message to the user or perform appropriate actions
+  //   }
+  // };
+
+
+
+
 
   let navigate=useNavigate()
   const {id}=useParams()
@@ -236,9 +286,9 @@ console.log(newProduct.productName)
                   ))}
                 </div>
                 <p className="sr-only">{reviews.average} out of 5 stars</p>
-                <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
+                {/* <a href={reviews.href} className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">
                   {reviews.totalCount} reviews
-                </a>
+                </a> */}
               </div>
             </div>
 
@@ -251,11 +301,11 @@ console.log(newProduct.productName)
               <button
                 type="submit"
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-black px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                onClick={addToBag}
-                key = {product.id}
-              >
-                Add to bag
-              </button>
+                onClick={addToCart} // Check if the onClick event is correctly connected to addToCart
+                key={product.id}
+                >
+                  Add to bag
+                </button>
             </form>
           </div>
 

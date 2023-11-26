@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link,Navigate, useNavigate } from 'react-router-dom';
 
 
 export default function Login({ setLoggedIn, setPremier }) {
@@ -107,10 +107,11 @@ export default function Login({ setLoggedIn, setPremier }) {
                 />
               </div>
 
-              <button type="submit" className="btn btn-primary btn-block">
+              <button type="submit" className="btn btn-primary btn-block mx-3 my-2">
                 Login
               </button>
             </form>
+            <Link className="btn btn-primary btn-block mx-3" to={"/forget"}>forget password? </Link>
           </div>
         </div>
       </div>

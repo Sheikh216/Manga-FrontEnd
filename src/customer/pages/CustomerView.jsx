@@ -4,9 +4,11 @@ import MainCar2 from '../components/homeCarosel/MainCar2';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-tailwind/react';
 
-export default function CustomerView({ Premier }) {
+export default function CustomerView({ Premier,cartItems,setitems }) {
   const [products, setProducts] = useState([]);
   console.log('Samir',Premier)
+
+  console.log(products)
 
   useEffect(() => {
     loadProducts();
@@ -16,8 +18,17 @@ export default function CustomerView({ Premier }) {
     try {
       const result = await axios.get('http://localhost:8080/products/getAll');
       setProducts(result.data);
+      
     } catch (error) {
       console.error('Error fetching products:', error);
+    }
+  };
+
+
+  const addToCart = (productId) => {
+    const productToAdd = products.find(product => product.id === productId);
+    if (productToAdd) {
+      setitems([...cartItems, productToAdd]);
     }
   };
 
@@ -36,9 +47,9 @@ export default function CustomerView({ Premier }) {
         {console.log("PREMIER IN VIEW",Premier)}
        
           {products.map((product) => (
-
+            
             <div key={product.id}>
-              {!Premier && product.premier? (
+              {!Premier && product.premier?  (
                 <Link to={`/PRO`}>
                   <Button className="group relative bg-white">
                     <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
@@ -53,6 +64,7 @@ export default function CustomerView({ Premier }) {
                         <h3 className="text-sm text-gray-700">
                           <span aria-hidden="true" className="absolute inset-0" />
                           {product.productName}
+                          {product.quantity}
                         </h3>
                         <p className="mt-1 text-sm text-gray-500">{product.brand}</p>
                       </div>
