@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
@@ -8,6 +8,13 @@ const Rating = () => {
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState('');
     const [userName, setUserName] = useState('');
+
+    useEffect(() => {
+        const storedUserName = localStorage.getItem('user');
+        if (storedUserName) {
+            setUserName(storedUserName);
+        }
+    }, []);
 
     const submitRating = async () => {
         try {
@@ -44,12 +51,6 @@ const Rating = () => {
                         value={review}
                         onChange={(e) => setReview(e.target.value)}
                         placeholder="Write a review..."
-                    />
-                    <input
-                        type="text"
-                        value={userName}
-                        onChange={(e) => setUserName(e.target.value)}
-                        placeholder="Enter Username"
                     />
                     <button onClick={submitRating}>Submit Rating</button>
                 </div>
