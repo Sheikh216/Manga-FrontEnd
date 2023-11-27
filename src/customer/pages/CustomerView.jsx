@@ -1,8 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import MainCar2 from '../components/homeCarosel/MainCar2';
-import { Link } from 'react-router-dom';
-import { Button } from '@material-tailwind/react';
+import {Link} from 'react-router-dom';
+import {Button} from '@material-tailwind/react';
+
+
+export default function CustomerView({Premier}) {
+    const [products, setProducts] = useState([]);
+    console.log('Samir', Premier)
+
+    useEffect(() => {
+        loadProducts();
+    }, []);
+
+    const loadProducts = async () => {
+        try {
+            const result = await axios.get('http://localhost:8080/products/getAll');
+            setProducts(result.data);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    };
 
 export default function CustomerView({ Premier,cartItems,setitems }) {
   const [products, setProducts] = useState([]);
@@ -23,6 +41,7 @@ export default function CustomerView({ Premier,cartItems,setitems }) {
       console.error('Error fetching products:', error);
     }
   };
+
 
   const addView = async (id) => {
     try {
@@ -95,6 +114,11 @@ export default function CustomerView({ Premier,cartItems,setitems }) {
                       {/* <p className="text-sm font-medium text-gray-900"><b>Price</b>{product.price}tk  <br></br>
                       <b>Views:</b> {product.view}</p> */}
                     </div>
+                      <Link to={`/rating/${product.id}`}>
+                          <Button className="group relative bg-black mt-2">
+                              Add Review
+                          </Button>
+                      </Link>
                     {product.premier && (
                       <div className="absolute top-0 left-0 w-8 h-8 bg-yellow-500 rounded-full flex justify-center items-center">
                         <span className="text-white font-bold">PRO</span>
@@ -128,9 +152,17 @@ export default function CustomerView({ Premier,cartItems,setitems }) {
                       <b>Views:</b> {product.view}</p>
                     </div>
 
+                      <Link to={`/rating/${product.id}`}>
+                          <Button className="group relative bg-black mt-2">
+                              Add Review
+                          </Button>
+                      </Link>
+
+
 
 
                     {/*  */}
+
                     {product.premier && (
                       <div className="absolute top-0 left-0 w-8 h-8 bg-yellow-500 rounded-full flex justify-center items-center">
                         <span className="text-white font-bold">PRO</span>
