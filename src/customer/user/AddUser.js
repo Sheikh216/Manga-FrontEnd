@@ -8,10 +8,11 @@ export default function AddUser({setPremier,setLoggedIn}) {
     name: '',
     username: '',
     email: '',
-    password:''
+    password:'',
+    mobileNo: ''
   });
 
-  const { name, username, email, password } = user;
+  const { name, username, email, password, mobileNo } = user;
 
   const onInputChange = (e) => {
     setuser({ ...user, [e.target.name]: e.target.value });
@@ -89,6 +90,20 @@ export default function AddUser({setPremier,setLoggedIn}) {
                   placeholder="Enter your password"
                   name="password"
                   value={password}
+                  onChange={onInputChange}
+                  required
+                />
+              </div>
+              <div className="mb-3">
+              <label htmlFor="mobileNo" className="form-label">
+                  Mobile Number
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Enter your mobile number"
+                  name="mobileNo"
+                  value={mobileNo}
                   onChange={onInputChange}
                   required
                 />

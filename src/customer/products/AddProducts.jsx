@@ -13,13 +13,42 @@
   ```
 */
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import { useState } from "react";
+
+import React,{ useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
 export default function AddProduct() {
-  let navigate=useNavigate()
+  //
+  const navigate = useNavigate();
+  const sam = localStorage.getItem("admin");
+
+  const checkAdmin = () => {
+   if (sam !== "true") {
+     
+     navigate('/loginUser');
+   }
+ };
+
+ React.useEffect(() => {
+  checkAdmin(); // Call checkAdmin function first
+  
+}, []);
+
+//
+
+
+
+
+
+
+
+
+
+
+
+  
 
   const [newProduct, setNewProduct] = useState({
     productName: "",
@@ -41,7 +70,7 @@ export default function AddProduct() {
   const onSubmit = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:8080/products/add",newProduct)
-    navigate("/")
+    navigate("/customerView")
   };
 
   const onCheckboxChange = (e) => {

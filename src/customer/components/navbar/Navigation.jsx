@@ -397,7 +397,7 @@ export default function Navigation() {
                 </div>
 
                 {/* Search */}
-                <div className="flex lg:ml-6">
+                {/* <div className="flex lg:ml-6">
                   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
@@ -405,10 +405,10 @@ export default function Navigation() {
                       aria-hidden="true"
                     />
                   </a>
-                </div>
+                </div> */}
 
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
+                {/* <div className="ml-4 flow-root lg:ml-6">
                   <a href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -419,7 +419,7 @@ export default function Navigation() {
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
