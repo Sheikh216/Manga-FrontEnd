@@ -1,17 +1,4 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
 import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
 
 import React,{ useState } from "react";
@@ -36,19 +23,6 @@ export default function AddProduct() {
   
 }, []);
 
-//
-
-
-
-
-
-
-
-
-
-
-
-  
 
   const [newProduct, setNewProduct] = useState({
     productName: "",

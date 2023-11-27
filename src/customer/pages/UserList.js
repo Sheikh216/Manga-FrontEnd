@@ -87,7 +87,7 @@ const setAsAdmin = async (uid) => {
                   <td>{user.username}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
-                  <td>{'****'}</td>
+                  
                   <td>
                     <Link
                         className="btn btn-primary mx-2"

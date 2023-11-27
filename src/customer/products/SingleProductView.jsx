@@ -117,22 +117,22 @@ export default function SingleProductView({items,setitems}) {
       // Add other necessary details
     };
   
-    // Get the CustomerID from localStorage
+    
     const CID = localStorage.getItem('CID');
   
-    // Get existing cart items from localStorage
+    
     const existingCartItems = JSON.parse(localStorage.getItem('cartItems')) || {};
   
-    // Retrieve or initialize cart items for the specific CustomerID
+    
     const cartItemsForCustomer = existingCartItems[CID] || [];
   
-    // Append the selected product to the existing items for the specific CustomerID
+    
     cartItemsForCustomer.push(selectedProduct);
   
-    // Update the cart items object with the new items for the specific CustomerID
+    
     existingCartItems[CID] = cartItemsForCustomer;
   
-    // Update localStorage with the updated cart items
+    
     localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
 
 
