@@ -35,7 +35,7 @@ export default function Login({ setLoggedIn, setPremier,admin_status }) {
         // Login successful, redirect to the dashboard or another page
         setLoggedIn(true);
         localStorage.setItem('loggedIn', true);
-
+        localStorage.setItem('user',loginData.username)
         setPremier(response.data.premier)
         
         console.log("obj",response.data.premier)

@@ -25,10 +25,14 @@ import ViewUser from "./customer/user/ViewUser";
 import SingleProductView from "./customer/products/SingleProductView";
 import { useState, useEffect } from 'react';
 import GO_PRO from "./customer/user/GO_PRO";
+
+import Rating from "./customer/rating";
+
 import ForgetPassword from "./customer/pages/ForgetPassword";
 import Cart from "./customer/pages/Cart";
 import DifferentCart from "./customer/pages/DifferentCart";
 import DifferentCustomerView from "./customer/pages/DifferentCustomerView";
+
 function App() {
 
 
@@ -126,6 +130,9 @@ function App() {
         setPremier={setisPremier} 
        />}/>
 
+       <Route exact path="/rating/:productId" element={<Rating />} />
+
+
       <Route exact path="/forget" element={<ForgetPassword/>}/>
       <Route exact path="/Different" element={<DifferentCart/>}/>
       <Route exact path="/Cart" element={<Cart
@@ -139,6 +146,7 @@ function App() {
       
 
        
+
       
         
         
