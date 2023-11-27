@@ -94,6 +94,23 @@ function classNames(...classes) {
 export default function SingleProductView() {
   const [selectedColor, setSelectedColor] = useState(product.colors[0])
   const [selectedSize, setSelectedSize] = useState(product.sizes[2])
+  const [ratings, setRatings] = useState([]);
+
+  const fetchRatings = async () => {
+    try {
+      const response = await axios.get(`http://localhost:8080/products/rating/${id}`);
+      setRatings(response.data);
+      console.log(ratings);
+    } catch (error) {
+      console.error('Error fetching ratings:', error);
+    }
+  };
+
+  useEffect(() => {
+    // Fetch ratings from the API
+    fetchRatings();
+  }, []);
+
 
   const CID = localStorage.getItem('CID');
 
@@ -289,6 +306,31 @@ console.log(newProduct.productName)
               <div className="mt-4 space-y-6">
                 <p className="text-sm text-gray-600">{product.details}</p>
               </div>
+
+              <div className="mt-10">
+                <h2 className="text-sm font-medium text-gray-900">Customer Ratings & Reviews</h2>
+                <div className="mt-4 space-y-4">
+                  {ratings.map((rating) => (
+                      <div key={rating.id} className="flex items-center">
+                        {/* Render each rating */}
+                        <div className="flex items-center">
+                          {[0, 1, 2, 3, 4].map((star) => (
+                              <StarIcon
+                                  key={star}
+                                  className={
+                                    star < rating.rating ? 'text-gray-900 h-5 w-5' : 'text-gray-200 h-5 w-5'
+                                  }
+                                  aria-hidden="true"
+                              />
+                          ))}
+                        </div>
+                        <p className="ml-2 text-sm text-gray-500">Rated by {rating.user.name}</p>
+                        <p className="ml-2 text-sm text-gray-500">{rating.review}</p>
+                      </div>
+                  ))}
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
