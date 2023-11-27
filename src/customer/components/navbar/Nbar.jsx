@@ -25,6 +25,7 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier,admin_status }) => {
     localStorage.setItem('admin', false);
     localStorage.setItem('loggedIn', false);
     localStorage.setItem('USER_PREMIER', false);
+    localStorage.setItem('CID','')
     navigate("/customerView")
 
   }

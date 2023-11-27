@@ -5,22 +5,22 @@ import {Link} from 'react-router-dom';
 import {Button} from '@material-tailwind/react';
 
 
-export default function CustomerView({Premier}) {
-    const [products, setProducts] = useState([]);
-    console.log('Samir', Premier)
+// export default function CustomerView({Premier}) {
+//     const [products, setProducts] = useState([]);
+//     console.log('Samir', Premier)
 
-    useEffect(() => {
-        loadProducts();
-    }, []);
+//     useEffect(() => {
+//         loadProducts();
+//     }, []);
 
-    const loadProducts = async () => {
-        try {
-            const result = await axios.get('http://localhost:8080/products/getAll');
-            setProducts(result.data);
-        } catch (error) {
-            console.error('Error fetching products:', error);
-        }
-    };
+//     const loadProducts = async () => {
+//         try {
+//             const result = await axios.get('http://localhost:8080/products/getAll');
+//             setProducts(result.data);
+//         } catch (error) {
+//             console.error('Error fetching products:', error);
+//         }
+//     };
 
 export default function CustomerView({ Premier,cartItems,setitems }) {
   const [products, setProducts] = useState([]);
