@@ -27,6 +27,7 @@ const FaqView = () => {
         e.preventDefault();
         emailjs.sendForm('service_q17yc8o', 'question_answer', replyForm.current, 'cQUqPlFkrc_X00QHr')
             .then((result) => {
+                axios.post(`http://localhost:8080/faq/${id}`);
                 console.log(result.text);
                 console.log(result.status);
             }, (error) => {
