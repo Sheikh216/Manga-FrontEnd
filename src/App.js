@@ -32,7 +32,9 @@ import ForgetPassword from "./customer/pages/ForgetPassword";
 import Cart from "./customer/pages/Cart";
 import DifferentCart from "./customer/pages/DifferentCart";
 import DifferentCustomerView from "./customer/pages/DifferentCustomerView";
-
+import FaqForm from "./customer/customerFaq";
+import UnansweredFaqs from "./customer/faq_admin";
+import FaqView from "./customer/faqview";
 function App() {
 
 
@@ -132,8 +134,10 @@ function App() {
 
        <Route exact path="/rating/:productId" element={<Rating />} />
 
-
-      <Route exact path="/forget" element={<ForgetPassword/>}/>
+          <Route exact path="/faq" element={<FaqForm/>}/>
+          <Route exact path="/faq_admin" element={<UnansweredFaqs/>}/>
+          <Route exact path="/faq_view/:id" element={<FaqView/>}/>
+          <Route exact path="/forget" element={<ForgetPassword/>}/>
       <Route exact path="/Different" element={<DifferentCart/>}/>
       <Route exact path="/Cart" element={<Cart
           items = {cartItems}
