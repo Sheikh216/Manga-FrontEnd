@@ -64,11 +64,11 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier,admin_status }) => {
 
             {admin === 'true' ? (
                 <div>
-                    <Link to={"/faq_admin"}>FAQ Admin</Link>
+                    <Link to={"/message_admin"}>Inbox</Link>
                 </div>
             ) : (
                 <div>
-                    <Link to={"/faq"}>FAQ</Link>
+                    <Link to={"/message"}>Message</Link>
                 </div>
             )}
 

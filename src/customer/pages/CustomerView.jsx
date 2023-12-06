@@ -51,107 +51,185 @@ export default function CustomerView({Premier, cartItems, setitems}) {
                 src="https://wallpaper.dog/large/10974217.jpg"
                 alt=""
             />
-            <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+            {/*<div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">*/}
+            {/*    <h2 className="text-2xl font-bold tracking-tight text-gray-900">Mangas</h2>*/}
+            {/*    <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">*/}
+            {/*        {console.log("PREMIER IN VIEW", Premier)}*/}
+
+            {/*        {products*/}
+            {/*            .filter((product) => product.quantity > 0) // Filter products with quantity > 0*/}
+            {/*            .map((product) => (*/}
+
+            {/*                <div key={product.id}>*/}
+            {/*                    {!Premier && product.premier ? (*/}
+            {/*                        <Link to={`/PRO`}>*/}
+            {/*                            <Button className="group relative bg-white"*/}
+            {/*                                    onClick={() => addView(product.id)}>*/}
+            {/*                                <div*/}
+            {/*                                    className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">*/}
+            {/*                                    <img*/}
+            {/*                                        src={product.image}*/}
+            {/*                                        className="h-full w-full object-cover object-center lg:h-full lg:w-full"*/}
+            {/*                                        alt={product.productName}*/}
+            {/*                                    />*/}
+
+            {/*                                </div>*/}
+
+            {/*                                <p>Views: {product.view}</p>*/}
+            {/*                                <div className="mt-4 flex justify-between">*/}
+            {/*                                    <div>*/}
+            {/*                                        <h3 className="text-sm text-gray-700">*/}
+            {/*                                            <span aria-hidden="true" className="absolute inset-0"/>*/}
+            {/*                                            {product.productName}*/}
+
+            {/*                                        </h3>*/}
+            {/*                                        <p className="mt-1 text-sm text-gray-500">{product.brand}<br></br>*/}
+            {/*                                        </p>*/}
+            {/*                                    </div>*/}
+            {/*                                    <div>*/}
+            {/*                                        <p className="text-sm font-medium text-gray-900">*/}
+            {/*                                            <br></br><b>Price</b>{product.price}tk <br></br>*/}
+            {/*                                            <b>Views:</b> {product.view}</p>*/}
+            {/*                                    </div>*/}
+            {/*                                    /!* <p className="text-sm font-medium text-gray-900"><b>Price</b>{product.price}tk  <br></br>*/}
+            {/*          <b>Views:</b> {product.view}</p> *!/*/}
+            {/*                                </div>*/}
+            {/*                                <Link to={`/rating/${product.id}`}>*/}
+            {/*                                    <Button className="group relative bg-black mt-2">*/}
+            {/*                                        Add Review*/}
+            {/*                                    </Button>*/}
+            {/*                                </Link>*/}
+            {/*                                {product.premier && (*/}
+            {/*                                    <div*/}
+            {/*                                        className="absolute top-0 left-0 w-8 h-8 bg-yellow-500 rounded-full flex justify-center items-center">*/}
+            {/*                                        <span className="text-white font-bold">PRO</span>*/}
+            {/*                                    </div>*/}
+            {/*                                )}*/}
+
+            {/*                            </Button>*/}
+            {/*                        </Link>*/}
+            {/*                    ) : <Link to={`/manga/${product.id}`}>*/}
+            {/*                        <Button className="group relative bg-white" onClick={() => addView(product.id)}>*/}
+            {/*                            <div*/}
+            {/*                                className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">*/}
+            {/*                                <img*/}
+            {/*                                    src={product.image}*/}
+            {/*                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"*/}
+            {/*                                    alt={product.productName}*/}
+            {/*                                />*/}
+            {/*                            </div>*/}
+
+            {/*                            <div className="mt-4 flex justify-between">*/}
+            {/*                                <div>*/}
+            {/*                                    <h3 className="text-sm text-gray-700">*/}
+            {/*                                        <span aria-hidden="true" className="absolute inset-0"/>*/}
+            {/*                                        {product.productName}*/}
+            {/*                                    </h3>*/}
+            {/*                                    <p className="mt-1 text-sm text-gray-500">{product.brand}</p>*/}
+            {/*                                </div>*/}
+            {/*                                <div className="mt-4 flex justify-between" key={product.id}>*/}
+
+            {/*                                </div>*/}
+            {/*                                <p className="text-sm font-medium text-gray-900">*/}
+            {/*                                    <b>Price</b>{product.price}tk <br></br>*/}
+            {/*                                    <b>Views:</b> {product.view}</p>*/}
+            {/*                            </div>*/}
+
+            {/*                            <Link to={`/rating/${product.id}`}>*/}
+            {/*                                <Button className="group relative bg-black mt-2">*/}
+            {/*                                    Add Review*/}
+            {/*                                </Button>*/}
+            {/*                            </Link>*/}
+
+
+            {/*                            /!*  *!/*/}
+
+            {/*                            {product.premier && (*/}
+            {/*                                <div*/}
+            {/*                                    className="absolute top-0 left-0 w-8 h-8 bg-yellow-500 rounded-full flex justify-center items-center">*/}
+            {/*                                    <span className="text-white font-bold">PRO</span>*/}
+            {/*                                </div>*/}
+            {/*                            )}*/}
+            {/*                        </Button>*/}
+            {/*                    </Link>}*/}
+            {/*                </div>*/}
+            {/*            ))}*/}
+            {/*    </div>*/}
+            {/*</div>*/}
+
+            <div className="container mt-16 mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">Mangas</h2>
-                <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                    {console.log("PREMIER IN VIEW", Premier)}
-
+                <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                     {products
-                        .filter((product) => product.quantity > 0) // Filter products with quantity > 0
+                        .filter((product) => product.quantity > 0)
                         .map((product) => (
-
                             <div key={product.id}>
                                 {!Premier && product.premier ? (
                                     <Link to={`/PRO`}>
-                                        <Button className="group relative bg-white"
-                                                onClick={() => addView(product.id)}>
-                                            <div
-                                                className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                        <Button className="group relative bg-white" onClick={() => addView(product.id)}>
+                                            <div className="aspect-ratio aspect-ratio--1x1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                                                 <img
                                                     src={product.image}
                                                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                                     alt={product.productName}
                                                 />
-
                                             </div>
-
                                             <p>Views: {product.view}</p>
-                                            <div className="mt-4 flex justify-between">
+                                            <div className="mt-4 d-flex justify-content-between">
                                                 <div>
-                                                    <h3 className="text-sm text-gray-700">
-                                                        <span aria-hidden="true" className="absolute inset-0"/>
-                                                        {product.productName}
-
-                                                    </h3>
-                                                    <p className="mt-1 text-sm text-gray-500">{product.brand}<br></br>
-                                                    </p>
+                                                    <h3 className="text-sm text-gray-700">{product.productName}</h3>
+                                                    <p className="mt-1 text-sm text-gray-500">{product.brand}</p>
                                                 </div>
                                                 <div>
                                                     <p className="text-sm font-medium text-gray-900">
-                                                        <br></br><b>Price</b>{product.price}tk <br></br>
-                                                        <b>Views:</b> {product.view}</p>
+                                                        <b>Price</b> {product.price}tk <br />
+                                                        <b>Views:</b> {product.view}
+                                                    </p>
                                                 </div>
-                                                {/* <p className="text-sm font-medium text-gray-900"><b>Price</b>{product.price}tk  <br></br>
-                      <b>Views:</b> {product.view}</p> */}
                                             </div>
                                             <Link to={`/rating/${product.id}`}>
-                                                <Button className="group relative bg-black mt-2">
-                                                    Add Review
-                                                </Button>
+                                                <Button className="group relative bg-black mt-2">Add Review</Button>
                                             </Link>
                                             {product.premier && (
-                                                <div
-                                                    className="absolute top-0 left-0 w-8 h-8 bg-yellow-500 rounded-full flex justify-center items-center">
+                                                <div className="position-absolute top-0 start-0 w-8 h-8 bg-yellow-500 rounded-full d-flex justify-content-center align-items-center">
                                                     <span className="text-white font-bold">PRO</span>
                                                 </div>
                                             )}
-
                                         </Button>
                                     </Link>
-                                ) : <Link to={`/manga/${product.id}`}>
-                                    <Button className="group relative bg-white" onClick={() => addView(product.id)}>
-                                        <div
-                                            className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                                            <img
-                                                src={product.image}
-                                                className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                                alt={product.productName}
-                                            />
-                                        </div>
-
-                                        <div className="mt-4 flex justify-between">
-                                            <div>
-                                                <h3 className="text-sm text-gray-700">
-                                                    <span aria-hidden="true" className="absolute inset-0"/>
-                                                    {product.productName}
-                                                </h3>
-                                                <p className="mt-1 text-sm text-gray-500">{product.brand}</p>
+                                ) : (
+                                    <Link to={`/manga/${product.id}`}>
+                                        <Button className="group relative bg-white" onClick={() => addView(product.id)}>
+                                            <div className="aspect-ratio aspect-ratio--1x1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                                <img
+                                                    src={product.image}
+                                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full"
+                                                    alt={product.productName}
+                                                />
                                             </div>
-                                            <div className="mt-4 flex justify-between" key={product.id}>
-
+                                            <div className="mt-4 d-flex justify-content-between">
+                                                <div>
+                                                    <h3 className="text-sm text-gray-700">{product.productName}</h3>
+                                                    <p className="mt-1 text-sm text-gray-500">{product.brand}</p>
+                                                </div>
+                                                <div>
+                                                    <p className="text-sm font-medium text-gray-900">
+                                                        <b>Price</b> {product.price}tk <br />
+                                                        <b>Views:</b> {product.view}
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <p className="text-sm font-medium text-gray-900">
-                                                <b>Price</b>{product.price}tk <br></br>
-                                                <b>Views:</b> {product.view}</p>
-                                        </div>
-
-                                        <Link to={`/rating/${product.id}`}>
-                                            <Button className="group relative bg-black mt-2">
-                                                Add Review
-                                            </Button>
-                                        </Link>
-
-
-                                        {/*  */}
-
-                                        {product.premier && (
-                                            <div
-                                                className="absolute top-0 left-0 w-8 h-8 bg-yellow-500 rounded-full flex justify-center items-center">
-                                                <span className="text-white font-bold">PRO</span>
-                                            </div>
-                                        )}
-                                    </Button>
-                                </Link>}
+                                            <Link to={`/rating/${product.id}`}>
+                                                <Button className="group relative bg-black mt-2">Add Review</Button>
+                                            </Link>
+                                            {product.premier && (
+                                                <div className="position-absolute top-0 start-0 w-8 h-8 bg-yellow-500 rounded-full d-flex justify-content-center align-items-center">
+                                                    <span className="text-white font-bold">PRO</span>
+                                                </div>
+                                            )}
+                                        </Button>
+                                    </Link>
+                                )}
                             </div>
                         ))}
                 </div>

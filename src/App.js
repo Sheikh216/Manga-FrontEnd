@@ -32,9 +32,12 @@ import ForgetPassword from "./customer/pages/ForgetPassword";
 import Cart from "./customer/pages/Cart";
 import DifferentCart from "./customer/pages/DifferentCart";
 import DifferentCustomerView from "./customer/pages/DifferentCustomerView";
-import FaqForm from "./customer/customerFaq";
-import UnansweredFaqs from "./customer/faq_admin";
-import FaqView from "./customer/faqview";
+import MessageForm from "./customer/customerMessage";
+import MessageView from "./customer/messageview";
+import UnansweredMessages from "./customer/message_admin";
+// src/index.js or src/index.jsx
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
 
 
@@ -134,9 +137,9 @@ function App() {
 
        <Route exact path="/rating/:productId" element={<Rating />} />
 
-          <Route exact path="/faq" element={<FaqForm/>}/>
-          <Route exact path="/faq_admin" element={<UnansweredFaqs/>}/>
-          <Route exact path="/faq_view/:id" element={<FaqView/>}/>
+          <Route exact path="/message" element={<MessageForm/>}/>
+          <Route exact path="/message_admin" element={<UnansweredMessages/>}/>
+          <Route exact path="/message_view/:id" element={<MessageView/>}/>
           <Route exact path="/forget" element={<ForgetPassword/>}/>
       <Route exact path="/Different" element={<DifferentCart/>}/>
       <Route exact path="/Cart" element={<Cart
