@@ -5,22 +5,6 @@ import {Link} from 'react-router-dom';
 import {Button} from '@material-tailwind/react';
 
 
-export default function CustomerView({Premier}) {
-    const [products, setProducts] = useState([]);
-    console.log('Samir', Premier)
-
-    useEffect(() => {
-        loadProducts();
-    }, []);
-
-    const loadProducts = async () => {
-        try {
-            const result = await axios.get('http://localhost:8080/products/getAll');
-            setProducts(result.data);
-        } catch (error) {
-            console.error('Error fetching products:', error);
-        }
-    };
 
 export default function CustomerView({ Premier,cartItems,setitems }) {
   const [products, setProducts] = useState([]);
@@ -81,7 +65,7 @@ export default function CustomerView({ Premier,cartItems,setitems }) {
         {console.log("PREMIER IN VIEW",Premier)}
        
         {products
-            .filter((product) => product.quantity > 0) // Filter products with quantity > 0
+            .filter((product) => product.quantity > -1) // Filter products with quantity > 0
             .map((product) => (
             
             <div key={product.id}>
