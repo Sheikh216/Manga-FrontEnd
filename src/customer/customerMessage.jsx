@@ -5,7 +5,7 @@ const MessageForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        message: ''
+        faq: ''
     });
 
     const handleChange = (e) => {
@@ -111,16 +111,16 @@ const MessageForm = () => {
                             />
                         </div>
                         <div className="mb-3">
-                            <label htmlFor="message" className="form-label">
+                            <label htmlFor="faq" className="form-label">
                                 Message
                             </label>
                             <textarea
                                 className="form-control"
-                                id="message"
+                                id="faq"
                                 placeholder="message"
-                                name="message"
+                                name="faq"
                                 rows="4"
-                                value={formData.message}
+                                value={formData.faq}
                                 onChange={handleChange}
                                 required
                             ></textarea>

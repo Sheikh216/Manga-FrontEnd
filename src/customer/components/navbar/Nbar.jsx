@@ -72,7 +72,6 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier,admin_status }) => {
                 </div>
             )}
 
-
             {/* CART */}
             <Link to="/Cart" className="group -m-2 flex items-center p-2">
                 <svg
