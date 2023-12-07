@@ -1,6 +1,6 @@
 import Navigation from "./customer/components/navbar/Navigation";
 import FooterFiveColsLogo from "./customer/components/footer";
-
+import UserProfiles from "./customer/pages/UserProfiles";
 import HomePage from "./customer/pages/HomePage";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import { Routes, Route } from "react-router-dom";
@@ -8,7 +8,7 @@ import React from "react";
 import AddProducts from "./customer/products/AddProducts";
 import Edit from "./customer/products/Edit";
 import CustomerView from "./customer/pages/CustomerView";
-
+import EditProfile from "./customer/pages/EditProfiles";
 import ViewProduct from "./customer/products/ViewProduct";
 import { BrowserRouter  as Router,Routes, Route } from 'react-router-dom';
 import Login from './customer/pages/Login';
@@ -100,10 +100,16 @@ function App() {
        
       
       <Routes>
+      <Route exact path= "/userProfile" element={<UserProfiles/>}/>
       <Route exact path= "/edituser/:id" element={<EditUser/>}/>
+
       <Route exact path= "/viewuser/:id" element={<ViewUser/>}/>
       <Route exact path = "/UserList" element = {<> <MainCar2/><UserList/> </>}/>
+      <Route exact path= "/editProfile/:id" element={<EditProfile/>}/>
+      
       <Route exact path = "/loginUser" element={<Login 
+
+      
         setLoggedIn={setIsLoggedIn}
         setPremier={setisPremier}
         admin_status= {setAdmin}  
