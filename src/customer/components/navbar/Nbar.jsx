@@ -1,15 +1,19 @@
-import React from 'react';
-import LoginIcon from '@mui/icons-material/Login';
-import { Link } from 'react-router-dom';
-import { Button } from '@material-tailwind/react';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { ShoppingCartIcon } from '@heroicons/react/outline'
+import React from "react";
+import LoginIcon from "@mui/icons-material/Login";
+import { Link } from "react-router-dom";
+import { Button } from "@material-tailwind/react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { ShoppingCartIcon } from "@heroicons/react/outline";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ProductCard from "../ProductCard";
+const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier, admin_status }) => {
+  const admin = localStorage.getItem("admin");
 
-const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier,admin_status }) => {
+  const [input, setinput] = React.useState("");
 
-    const admin = localStorage.getItem('admin')
+    // const admin = localStorage.getItem('admin')
 
-    const [input, setinput] = React.useState('');
+    // const [input, setinput] = React.useState('');
 
     const[result,setresult] = React.useState([])
 
@@ -98,15 +102,50 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier,admin_status }) => {
             {/* CART */}
 
 
-            <div className="flex items-center">
-                <input
 
-                    placeholder="Search..."
-                    value={input}
-                    onChange={(e)=> handleChange(e.target.value)}
-                    className="bg-gray-200 px-3 py-1 rounded-md focus:outline-none"
-                />
-            </div>
+            <Link to="/wishlist" className="group -m-2 flex items-center p-2">
+        <FavoriteIcon />
+      </Link>
+
+
+
+
+      <div className="flex flex-wrap justify-center">
+        <input
+          placeholder="Search..."
+          value={input}
+          onChange={(e) => handleChange(e.target.value)}
+          className="bg-gray-200 px-3 py-1 rounded-md focus:outline-none text-black"
+        />
+
+        {/* {result.length >1 && result.length <4
+          ? result.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+          : input && (
+              <p className="text-center text-xl text-gray-600 mt-4">
+                No products found
+              </p>
+            )} */}
+        <div className="flex flex-col items-center w-full">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+            
+            </thead>
+            <tbody>
+              {result.length >1 && result.length <4
+          ? result.map((product, index) => (
+                <ProductCard key={index} product={product} />
+              )):""}
+            </tbody>
+          </table>
+          {result.length === 0 &&  (
+            <p className="text-center text-xl text-gray-600 mt-4">
+              No products found
+            </p>
+          )}
+        </div>
+        </div>
 
 
 

@@ -30,6 +30,7 @@ import Rating from "./customer/rating";
 
 import ForgetPassword from "./customer/pages/ForgetPassword";
 import Cart from "./customer/pages/Cart";
+import WishList from "./customer/pages/Wishlist";
 import DifferentCart from "./customer/pages/DifferentCart";
 import DifferentCustomerView from "./customer/pages/DifferentCustomerView";
 import FaqForm from "./customer/customerFaq";
@@ -43,8 +44,13 @@ function App() {
   const [isPremier,setisPremier] = useState(false)
   // 
   const [cartItems,setcartItems] = React.useState([])
+  
   // 
   const [cart, setCart] = useState([]);
+
+
+  const [wishListItems,setwishListItems] = React.useState([])
+  const [wishList, setWishList] = useState([]);
   const [adminPop, setadminPop] = useState('');
 
   
@@ -142,6 +148,11 @@ function App() {
       <Route exact path="/Cart" element={<Cart
           items = {cartItems}
           setitems = {setcartItems}
+
+      />}/>
+       <Route exact path="/Wishlist" element={<WishList
+          items = {wishListItems}
+          setitems = {setwishListItems}
 
       />}/>
 

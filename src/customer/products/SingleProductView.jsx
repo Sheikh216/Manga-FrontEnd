@@ -1,24 +1,4 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    theme: {
-      extend: {
-        gridTemplateRows: {
-          '[auto,auto,1fr]': 'auto auto 1fr',
-        },
-      },
-    },
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
+
 import { useState ,useEffect} from 'react'
 import { StarIcon } from '@heroicons/react/20/solid'
 import { RadioGroup } from '@headlessui/react'
@@ -159,28 +139,87 @@ export default function SingleProductView({items,setitems}) {
     console.log(`${selectedProduct.name} added to cart for CustomerID: ${CID}!`);
   };
   
+
+  const wishList = () => {
+    console.log('Add to cart clicked!');
+    
+    const selectedProduct = {
+      id: newProduct.id,
+      name: newProduct.productName,
+      price: newProduct.price,
+      quantity: newProduct.quantity,
+      qty: 1,
+      image : newProduct.image,
+      description: newProduct.description
+      // Add other necessary details
+    };
   
+    // Get the CustomerID from localStorage
+    const CID = localStorage.getItem('CID');
   
-  // const addToBag = async () => {
-  //   try {
-      
-  //     const url = `http://localhost:8080/add-to-cart/${CID}/${id}`
-  //     console.log(url)
-  //     const response = await axios.post(
-  //       `http://localhost:8080/add-to-cart/${CID}/${id}`, // Replace this URL with your backend endpoint
-  //       // Additional Axios config, if needed
-  //     );
-  //     // Handle success response
-  //     console.log('Product added to the bag:', response.data);
-  //     // Perform any necessary actions after adding to the cart (e.g., show a success message)
-  //   } catch (error) {
-  //     // Handle error
-  //     console.error('Error adding product to the bag:', error);
-  //     // Show an error message to the user or perform appropriate actions
+    // Get existing cart items from localStorage
+    const existingCartItems = JSON.parse(localStorage.getItem('wishListItems')) || {};
+  
+    // Retrieve or initialize cart items for the specific CustomerID
+    const cartItemsForCustomer = existingCartItems[CID] || [];
+  
+    // Append the selected product to the existing items for the specific CustomerID
+    cartItemsForCustomer.push(selectedProduct);
+  
+    // Update the cart items object with the new items for the specific CustomerID
+    existingCartItems[CID] = cartItemsForCustomer;
+  
+    // Update localStorage with the updated cart items
+    localStorage.setItem('wishListItems', JSON.stringify(existingCartItems));
+
+
+    
+  
+    console.log(`${selectedProduct.name} added to cart for CustomerID: ${CID}!`);
+  };
+  
+  // const wishList = () => {
+  //   console.log('Add to wishlist clicked!');
+  
+  //   const selectedProduct = {
+  //     id: newProduct.id,
+  //     name: newProduct.productName,
+  //     price: newProduct.price,
+  //     quantity: newProduct.quantity,
+  //     qty: 1,
+  //     image: newProduct.image,
+  //     description: newProduct.description
+  //     // Add other necessary details
+  //   };
+  
+  //   // Get the CustomerID from localStorage
+  //   const CID = localStorage.getItem('CID');
+  
+  //   // Get existing wishlist items from localStorage
+  //   const existingWishlistItems = JSON.parse(localStorage.getItem('wishlistItems')) || {};
+  
+  //   // Retrieve or initialize wishlist items for the specific CustomerID
+  //   const wishlistItemsForCustomer = existingWishlistItems[CID] || [];
+  
+  //   // Check if the product is already in the wishlist
+  //   const isProductInWishlist = wishlistItemsForCustomer.some(item => item.id === selectedProduct.id);
+  
+  //   if (!isProductInWishlist) {
+  //     // Append the selected product to the existing items for the specific CustomerID
+  //     wishlistItemsForCustomer.push(selectedProduct);
+  
+  //     // Update the wishlist items object with the new items for the specific CustomerID
+  //     existingWishlistItems[CID] = wishlistItemsForCustomer;
+  
+  //     // Update localStorage with the updated wishlist items
+  //     localStorage.setItem('wishlistItems', JSON.stringify(existingWishlistItems));
+  
+  //     console.log(`${selectedProduct.name} added to wishlist for CustomerID: ${CID}!`);
+  //   } else {
+  //     console.log(`${selectedProduct.name} is already in the wishlist for CustomerID: ${CID}`);
   //   }
   // };
-
-
+  
 
 
 
@@ -325,6 +364,21 @@ console.log(newProduct.productName)
                   Add to bag
                 </button>
             </form>
+            <form className="mt-10" >
+            
+
+              {/* Sizes */}
+            
+
+              <button
+                type="submit"
+                className="mt-10 flex  items-center justify-center rounded-md border border-transparent bg-red-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                onClick={wishList} // Check if the onClick event is correctly connected to addToCart
+                key={product.id}
+                >
+                  Add to Wish List
+                </button>
+            </form>
           </div>
 
           <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pb-16 lg:pr-8 lg:pt-6">
@@ -358,7 +412,7 @@ console.log(newProduct.productName)
                 <p className="text-sm text-gray-600">{product.details}</p>
               </div>
 
-              <div className="mt-10">
+              <di v className="mt-10">
                 <h2 className="text-sm font-medium text-gray-900">Customer Ratings & Reviews</h2>
                 <div className="mt-4 space-y-4">
                   {ratings.map((rating) => (
@@ -380,7 +434,7 @@ console.log(newProduct.productName)
                       </div>
                   ))}
                 </div>
-              </div>
+              </di>
 
             </div>
           </div>
