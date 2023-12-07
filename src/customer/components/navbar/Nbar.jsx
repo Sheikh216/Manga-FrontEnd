@@ -69,11 +69,26 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier, admin_status }) => {
   };
 
   return (
-    <nav className="bg-black text-white flex justify-between items-center p-4 container">
+    <nav className="bg-black text-white flex justify-between items-center p-4">
       {/* Logo */}
-      <div>
+      {/* <div>
         <Link to={"/customerView"}>HOME</Link>
+      </div> */}
+
+      <div className="ml-4 flex lg:ml-0 lg:items-center ">
+                <a href="#">
+                  <span className="sr-only">Your Company</span>
+                  <Link to="/customerView">
+                    <img
+                      className="  pb-3 rounded-full h-20 w-18 flex items-center justify-center "
+                      
+                      src="https://seeklogo.com/images/M/Manga-logo-000566115A-seeklogo.com.png"
+                      alt=""
+                    />
+                  </Link>
+                </a>
       </div>
+
 
       {admin === "true" ? (
         <div>
@@ -141,11 +156,11 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier, admin_status }) => {
                 : ""}
             </tbody>
           </table>
-          {result.length === 0 && (
+          {/* {result.length === 0 && (
             <p className="text-center text-xl text-gray-600 mt-4">
               No products found
             </p>
-          )}
+          )} */}
         </div>
       </div>
 
