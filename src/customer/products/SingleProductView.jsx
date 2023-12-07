@@ -141,6 +141,7 @@ export default function SingleProductView({items,setitems}) {
     const existingCartItems = JSON.parse(localStorage.getItem('cartItems')) || {};
   
     
+    //check existing cart with that CID
     const cartItemsForCustomer = existingCartItems[CID] || [];
   
     

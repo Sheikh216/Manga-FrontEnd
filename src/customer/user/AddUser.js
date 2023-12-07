@@ -23,9 +23,10 @@ export default function AddUser({setPremier,setLoggedIn}) {
   const onSubmit=async(e)=>{
    e.preventDefault()
    await axios.post("http://localhost:8080/user",user)
-   setPremier(false)
-   setLoggedIn(true)
-   navigate("/customerView");
+  //  setPremier(false)
+  //  setLoggedIn(true)
+  //  localStorage.setItem("LOGIN",true)
+   navigate("/loginUser");
   }
 
   return (

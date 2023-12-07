@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 
 // Main Rating component
 const Rating = () => {
@@ -10,11 +10,31 @@ const Rating = () => {
     const [userName, setUserName] = useState('');
 
     useEffect(() => {
+
+        checkLogin()
         const storedUserName = localStorage.getItem('user');
         if (storedUserName) {
             setUserName(storedUserName);
         }
     }, []);
+
+
+    const navigate = useNavigate();
+    const login_info = localStorage.getItem("LOGIN");
+  
+  
+  
+    
+  
+  
+    const checkLogin = () => {
+     if (login_info !== "true") {
+       
+       navigate('/loginUser');
+     }
+   };
+  
+
 
     const submitRating = async () => {
         try {
