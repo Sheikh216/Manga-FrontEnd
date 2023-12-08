@@ -81,7 +81,7 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier, admin_status }) => {
                   <Link to="/customerView">
                     <img
                       className="  pb-3 rounded-full h-20 w-18 flex items-center justify-center "
-                      
+
                       src="https://seeklogo.com/images/M/Manga-logo-000566115A-seeklogo.com.png"
                       alt=""
                     />
@@ -89,35 +89,34 @@ const Nbar = ({ loggedIn, Premier, setLoggedIn, setPremier, admin_status }) => {
                 </a>
       </div>
 
+            {admin === 'true' ? (
+                <div>
+                    <Link to={"/message_admin"}>Inbox</Link>
+                </div>
+            ) : (
+                <div>
+                    <Link to={"/message"}>Message</Link>
+                </div>
+            )}
 
-      {admin === "true" ? (
-        <div>
-          <Link to={"/faq_admin"}>FAQ Admin</Link>
-        </div>
-      ) : (
-        <div>
-          <Link to={"/faq"}>FAQ</Link>
-        </div>
-      )}
-
-      {/* CART */}
-      <Link to="/Cart" className="group -m-2 flex items-center p-2">
-        <svg
-          className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <circle cx="9" cy="21" r="1" />
-          <circle cx="20" cy="21" r="1" />
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 1.92 1.61h10.8a2 2 0 0 0 1.92-1.61L23 6H6" />
-        </svg>
-        {/* You can replace the static '0' with the actual count of items in the cart */}
-        {/* <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+            {/* CART */}
+            <Link to="/Cart" className="group -m-2 flex items-center p-2">
+                <svg
+                    className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                >
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 1.92 1.61h10.8a2 2 0 0 0 1.92-1.61L23 6H6" />
+                </svg>
+                {/* You can replace the static '0' with the actual count of items in the cart */}
+                {/* <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
         0
       </span> */}
         <span className="sr-only">items in cart, view bag</span>
