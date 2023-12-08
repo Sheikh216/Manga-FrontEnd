@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
 import { useParams,useNavigate } from 'react-router-dom';
 
